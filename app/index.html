@@ -1,6 +1,7 @@
 <html ng-app="myApp">
 <head>
 	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
 </head>
 <body >
 	<div ng-controller="mainController">
@@ -8,6 +9,7 @@
 			{{greeting}}, 	{{companyName}} <sup>2</sup>
 		</h1>
 		<h2>{{7+5}}</h2>
+		<h2>{{['apple', 'banana', 'grape'][2]}}</h2>
 
 		<input ng-value="greeting" />
 
@@ -15,12 +17,12 @@
 			<h2>{{greeting}}</h2>
 		</div>
 
-		<h2 style="color:red">
+		<h2 style="color:red" ng-non-bindable>
 			from outside controller = {{greeting}}
 		</h2>
 	</div>
 	<div ng-controller="otherController">
-		<h3 style="color:blue">{{greeting}}</h3>
+		<h3 style="color:blue" ng-bind-html="greeting"></h3>
 	</div>
 	<div>
 		<input ng-value="greeting" />

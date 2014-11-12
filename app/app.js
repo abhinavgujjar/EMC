@@ -1,4 +1,5 @@
-angular.module('myApp', []);
+
+angular.module('myApp', ['ngSanitize']);
 
 	function anyName ($scope, $rootScope){
 			var isGood = false;
@@ -18,7 +19,7 @@ angular.module('myApp', []);
 
 	angular.module('myApp').controller('mainController', anyName);
 	angular.module('myApp').controller('otherController', function($scope){
-
+		$scope.greeting = "Great Morning <h1>SUPER</h1>";
 	});
 	
 	angular.module('myApp').controller('nestedController', function($scope){
