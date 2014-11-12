@@ -2,32 +2,53 @@
 <head>
 	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+
+	<style type="text/css">
+		.highlight {
+			font-size: 56
+		}
+
+		.aged {
+			font-family: 'Tahoma'
+		}
+
+		.even {
+			background-color: blue
+		}
+	</style>
 </head>
 <body >
 	<div ng-controller="mainController">
-		<h1 > 
+		<h1 >
 			{{greeting}}, 	{{companyName}} <sup>2</sup>
 		</h1>
 		<h2>{{7+5}}</h2>
 		<h2>{{['apple', 'banana', 'grape'][2]}}</h2>
 
-		<input ng-value="greeting" />
-
-		<div ng-controller="nestedController">
-			<h2>{{greeting}}</h2>
+		<div>
+			<input ng-model="greeting" />
+		</div>
+		<div>
+			<input ng-model="greeting" />
+		</div>
+		<div>
+			<input ng-model="greeting" />
+		</div>
+		<div>
+			<textarea ng-model="greeting"></textarea>
+			/>
 		</div>
 
-		<h2 style="color:red" ng-non-bindable>
-			from outside controller = {{greeting}}
-		</h2>
-	</div>
-	<div ng-controller="otherController">
-		<h3 style="color:blue" ng-bind-html="greeting"></h3>
-	</div>
-	<div>
-		<input ng-value="greeting" />
-		<input ng-value="dummy" />
+		<div ng-hide="hideExtra">
 
+			<h1 style="color:red">
+				{{greeting}}, 	{{companyName}} <sup>2</sup>
+			</h1>
+
+			<input ng-value="greeting" />
+
+			<h2 style="color:red" ng-non-bindable>from outside controller = {{greeting}}</h2>
+		</div>
 	</div>
 
 </body>
