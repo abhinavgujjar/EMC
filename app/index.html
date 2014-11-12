@@ -3,6 +3,8 @@
 	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+
 	<style type="text/css">
 		.highlight {
 			font-size: 56
@@ -17,37 +19,39 @@
 		}
 	</style>
 </head>
-<body >
+<body class="container">
 	<div ng-controller="mainController">
 		<h1 >
 			{{greeting}}, 	{{companyName}} <sup>2</sup>
 		</h1>
-		<h2>{{7+5}}</h2>
-		<h2>{{['apple', 'banana', 'grape'][2]}}</h2>
 
 		<div>
 			<input ng-model="greeting" />
 		</div>
-		<div>
-			<input ng-model="greeting" />
-		</div>
-		<div>
-			<input ng-model="greeting" />
-		</div>
-		<div>
-			<textarea ng-model="greeting"></textarea>
-			/>
-		</div>
 
-		<div ng-hide="hideExtra">
+		<br/>
+		<br/>
+		<br/>
 
-			<h1 style="color:red">
-				{{greeting}}, 	{{companyName}} <sup>2</sup>
-			</h1>
-
-			<input ng-value="greeting" />
-
-			<h2 style="color:red" ng-non-bindable>from outside controller = {{greeting}}</h2>
+		<div ng-repeat="hotel in hotels">
+			<div class="row well well-sm">
+				<div class="row col-md-12 col-sm-12">
+					<h2>{{hotel.name}}</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-1 hidden-sm">{{hotel.rating}}</div>
+					<img ng-src="images/{{hotel.pic}}" class="col-md-3 col-sm-12" />
+					<div class="col-md-3 hidden-sm">
+						<h3>{{hotel.price}}</h3>
+					</div>
+					<div class="col-md-4 hidden-sm">
+						<div>
+							<a ng-href="{{hotel.website}}">website</a>
+						</div>
+						<div  class="text-muted">{{hotel.description}}</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
