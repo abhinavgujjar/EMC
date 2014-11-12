@@ -1,0 +1,33 @@
+<html ng-app="myApp">
+<head>
+	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+</head>
+<body >
+	<div ng-controller="mainController">
+		<h1 >
+			{{greeting}}, 	{{companyName}} <sup>2</sup>
+		</h1>
+		<h2>{{7+5}}</h2>
+
+		<input ng-value="greeting" />
+
+		<div ng-controller="nestedController">
+			<h2>{{greeting}}</h2>
+		</div>
+
+		<h2 style="color:red">
+			from outside controller = {{greeting}}
+		</h2>
+	</div>
+	<div ng-controller="otherController">
+		<h3 style="color:blue">{{greeting}}</h3>
+	</div>
+	<div>
+		<input ng-value="greeting" />
+		<input ng-value="dummy" />
+
+	</div>
+
+</body>
+	<script type="text/javascript" src="app.js"></script>
+</html>
