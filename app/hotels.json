@@ -6,6 +6,12 @@
 	"description": "We had a company meeting there and it was not at all upto the mark. Rooms were looking very old. We stayed for 2 days and no one is interested to change soaps, and dont expect hot water to be hot , it would be warm only. For playing games timings are from 7 AM to 10 PM , no one would be there by 7 AM , we need to wait for them to arrive and provide kits. By the time we went in to ground at 7 AM some one else is already playing and he said that they are their members. ",
 	"website": "http://www.clarksexotica.com/",
 	"pic": "goldenpalms.jpg",
+	"reviews" : [{
+		"name": "Aus-Nico",
+		"location": "Calais, France",
+		"summary" : "The Best!",
+		"review" : "One of the best hotels we've stayed at, luxurious rooms, quality food, great spa, awesome swiming pool and above all incredible service. All the staff were really friendly and always there to help. 5 star service" 
+		}]
 }, {
 	"name": "Clarks Exotica",
 	"price": 13000,
