@@ -1,0 +1,46 @@
+<html>
+<head>
+	<script type="text/javascript">
+// Code goes here
+
+var greetingModule = (function(companyName){
+	
+	function getGreeting(){
+	    var time = new Date();
+	    var hour = time.getHours();
+	    if ( hour > 12){
+	        return 'Afternoon - ' + companyName;
+	    }else{
+	        return 'Morning - ' + companyName;
+	    }
+	}
+
+	var count = 0;
+
+	function sayHi(){
+		count ++;
+		alert( count + ': Hi, ' + getGreeting());
+	}
+
+	function sayHello(){
+		count ++;
+		alert(count + 'Hello, ' + getGreeting());
+	}
+
+	return {
+	    sayHi: sayHi,
+	    sayHello: sayHello
+
+	}
+
+})('EMC');
+
+
+greetingModule.sayHi();
+greetingModule.sayHello();
+
+
+	</script>
+</head>
+
+</html>
