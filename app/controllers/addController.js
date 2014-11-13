@@ -1,4 +1,4 @@
-angular.module('myApp').controller('addController', function($scope, hotelsData) {
+angular.module('myApp').controller('addController', function($scope, hotelsData, $location) {
 	var defaultHotel = {
 		price : 5000,
 		amenities : [{
@@ -8,6 +8,16 @@ angular.module('myApp').controller('addController', function($scope, hotelsData)
 		}
 		]
 	};
+
+	$scope.itemBeingEdited;
+
+	$scope.edit = function(item){
+		$scope.itemBeingEdited = item;
+	}
+
+	$scope.save= function(){
+		$scope.itemBeingEdited= null;	
+	}
 
 	$scope.addAmenity = function(newAmenity){
 		$scope.newHotel.amenities.push({
@@ -24,6 +34,9 @@ angular.module('myApp').controller('addController', function($scope, hotelsData)
 	$scope.addHotel = function() {
 
 		hotelsData.addHotel($scope.newHotel);
+
+		$location.url('/listing');
+
 	}
 
 });

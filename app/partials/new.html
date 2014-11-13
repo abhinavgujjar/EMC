@@ -52,16 +52,32 @@
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button ng-click="addHotel(newHotel)" class="btn btn-default">Create</button>
-           <button ng-click="reset()" class="btn btn-default">Reset</button>
+          <button ng-click="addHotel(newHotel)" ng-disabled="hotelsForm.$invalid" class="btn btn-default">Create</button>
+          <button ng-click="reset()" class="btn btn-default">Reset</button>
         </div>
       </div>
     </form>
   </div>
   <div class="col-md-3">
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat="item in newHotel.amenities">{{item.name}}</li>
-      <li class="list-group-item" ><input ng-model="newAmenity" type="text"/><button ng-click="addAmenity(newAmenity)" class="btn btn-sm btn-primary">Add</button></li>
+      <li class="list-group-item" ng-repeat="item in newHotel.amenities">
+        <span ng-hide="itemBeingEdited === item">
+          {{item.name}}
+          <button>
+            <span ng-click="edit(item)" class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </span>
+        <span ng-show="itemBeingEdited === item">
+          <input type="text" ng-model="item.name"/>
+          <button>
+            <span ng-click="save()" class="glyphicon glyphicon-file"></span>
+          </button>
+        </span>
+      </li>
+      <li class="list-group-item" >
+        <input ng-model="newAmenity" type="text"/>
+        <button  ng-click="addAmenity(newAmenity)" class="btn btn-sm btn-primary">Add</button>
+      </li>
     </ul>
   </div>
 </div>
