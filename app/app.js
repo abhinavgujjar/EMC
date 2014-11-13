@@ -11,24 +11,37 @@ function anyName($scope, $rootScope) {
 
 	$scope.greeting = greeting;
 
+	$scope.showMore = function(hotel){
+		hotel.showMore = true;
+	}
+
+	$scope.maxItems = 5;
+	$scope.orderTerm = 'name';
+
 
 	$scope.companyName = "EMC";
 
 	$scope.classEven = 'even';
+
+	$scope.addHotel = function(){
+
+		var obj = angular.copy($scope.newHotel);
+		$scope.hotels.push(obj);
+	}
 
 	$scope.hotels = [{
 		"name": "Golden Palms",
 		"price": 30000,
 		"location": "Golden Palms Avenue, Off Tumkur Road | Hobli, Tumkur Road, Bangalore 562123, India",
 		"rating": 6,
-		"description": "We had a company meeting there and it was not at all upto the mark. Rooms were looking very old. We stayed for 2 days and no one is interested to change soaps, and dont expect hot water to be hot , it would be warm only. For playing games timings are from 7 AM to 10 PM , no one would be there by 7 AM , we need to wait for them to arrive and provide kits. By the time we went in to ground at 7 AM some one else is already playing and he said that they are their members. ",
+		"description": "We had a company meeting there",
 		"website": "http://www.clarksexotica.com/",
 		"pic": "goldenpalms.jpg",
 	}, {
 		"name": "Clarks Exotica",
 		"price": 13000,
 		"location": "Swiss Town, Hollywood Junction, Sadahalli Post, Devanahalli Road, Bangalore 562 110, India",
-		"description": "Very comfortable, clean and classy hotel with all modern amenities and hospitable staff. We couldn’t stop ourselves from extending our stay. I recommend for family to stay and enjoy the hospitality of Clarks Exotica. Food is good but just one suggestion that they can add few more non-veg items like kabab/grill/tandoor to the buffet spread.",
+		"description": "Very comfortable, clean and classy hotel",
 		"website": "http://www.clarksexotica.com/",
 		"pic": "clarks-exotica-resort.jpg",
 		"rating": 6
