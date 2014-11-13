@@ -1,14 +1,25 @@
-angular.module('myApp', ['ngSanitize', 'myApp.filters', 
-	'myApp.service', 'ngRoute', 'abGreeting']);
+angular.module('myApp', ['ngSanitize', 'myApp.filters',
+	'myApp.service', 'ngRoute', 'abGreeting'
+]);
 
 angular.module('myApp').config(function($routeProvider, greetingProvider) {
 	$routeProvider.when('/home', {
 		templateUrl: 'partials/home.html',
-		controller : 'homeController'
+		controller: 'homeController'
 	});
 
 	$routeProvider.when('/listing', {
-		templateUrl: 'partials/listing.html'
+		templateUrl: 'partials/listing.html',
+		controller: 'listingController'
+	});
+	
+	$routeProvider.when('/new', {
+		templateUrl: 'partials/new.html',
+		controller: 'addController'
+	});
+
+	$routeProvider.otherwise({
+		redirectTo: '/home'
 	});
 
 	greetingProvider.setCompanyName('Microsoft');
@@ -115,6 +126,3 @@ angular.module('myApp.service').factory('votingService', function() {
 	}
 
 });
-
-
-
