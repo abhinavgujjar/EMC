@@ -70,7 +70,12 @@
 					<h2 ng-class="{highlight : hotel.price>20000}">{{hotel.name | uppercase}}</h2>
 				</div>
 				<div class="row">
-					<div class="col-md-1 hidden-sm">{{hotel.rating}}</div>
+					<div class="col-md-1 hidden-sm">
+						<div><button ng-click="upVote(hotel)" class="btn btn-success"><span class="glyphicon glyphicon-chevron-up"></span></button></div>
+						<div><h3>{{hotel.rating}}</h3></div>
+						<div><button ng-click="downVote(hotel)" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-down"></span></button></div>
+					
+					</div>
 					<img ng-src="images/{{hotel.pic}}" class="col-md-3 col-sm-12" />
 					<div class="col-md-3 hidden-sm">
 						<h3>{{hotel.price | currency : 'INR '}}</h3>

@@ -1,22 +1,32 @@
 angular.module('myApp', ['ngSanitize']);
 
-function anyName($scope, $rootScope) {
+function mainController($scope, $rootScope) {
 	var isGood = false;
 	var prefix = 'Bad';
 	if (isGood) {
 		prefix = 'Good';
 	}
 
+
+
 	var greeting = prefix + 'Late Morning';
 
 	$scope.greeting = greeting;
 
-	$scope.showMore = function(hotel){
+	$scope.showMore = function	(hotel){
 		hotel.showMore = true;
 	}
 
 	$scope.maxItems = 5;
 	$scope.orderTerm = 'name';
+
+	$scope.upVote = function(hotel){
+		hotel.rating ++;
+	}
+
+	$scope.downVote = function(hotel){
+		hotel.rating --;
+	}
 
 
 	$scope.companyName = "EMC";
@@ -81,4 +91,4 @@ function anyName($scope, $rootScope) {
 }
 
 
-angular.module('myApp').controller('mainController', anyName);
+angular.module('myApp').controller('mainController', mainController);
