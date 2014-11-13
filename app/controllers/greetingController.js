@@ -6,11 +6,9 @@ angular.module('myApp').controller('greetingController', function($scope) {
 		prefix = 'Good';
 	}
 
-
-
 	var greeting = prefix + 'Late Morning';
 
 	$scope.greeting = greeting;
 
-
+	$scope.companyName = "EMC";
 });

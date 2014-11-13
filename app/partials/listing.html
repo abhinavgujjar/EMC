@@ -1,0 +1,101 @@
+<div class="row col-md-12">
+		<div ng-controller="greetingController" class="lead">
+			<h1 >
+				{{greeting}}, 	{{companyName}} <sup>2</sup>
+			</h1>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div ng-controller="listingController">
+
+			<br/>
+
+			<div>
+				Search:
+				<input type="text" ng-model="searchTerm"/>
+				Order:
+				<select ng-model="orderTerm">
+					<option value="rating">Rating</option>
+					<option value="location">Location</option>
+					<option value="name">Name</option>
+				</select>
+				show:
+				<input type="number" ng-model="maxItems"/>
+			</div>
+
+			<hr/>
+
+			<br/>
+
+			<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderTerm | limitTo : maxItems">
+				<div class="row well well-sm">
+					<div class="row col-md-5 col-sm-5" ng-class="{'bg-warning' : hotel.price>
+						20000}">
+						<h2 >{{hotel.name | uppercase}}</h2>
+					</div>
+					<div class="row col-md-12 col-sm-12">
+						<small>{{hotel.location | localify : true}}</small>
+					</div>
+					<div class="row">
+						<div class="col-md-1 hidden-sm">
+							<div class="text-center">
+								<button ng-click="upVote(hotel)" class="btn btn-success">
+									<span class="glyphicon glyphicon-chevron-up"></span>
+								</button>
+							</div>
+							<div class="text-center">
+								<h3>{{hotel.rating}}</h3>
+							</div>
+							<div class="text-center">
+								<button ng-click="downVote(hotel)" class="btn btn-danger">
+									<span class="glyphicon glyphicon-chevron-down"></span>
+								</button>
+							</div>
+
+						</div>
+						<img ng-src="images/{{hotel.pic}}" class="col-md-3 col-sm-12" />
+						<div class="col-md-3 hidden-sm">
+							<h3>{{hotel.price | currency : 'INR '}}</h3>
+						</div>
+						<div class="col-md-4 hidden-sm">
+							<div>
+								<a ng-href="{{hotel.website}}">website</a>
+							</div>
+							<div  class="text-muted">
+								<span ng-hide="hotel.showMore">{{hotel.description | lowercase | limitTo : maxLength}}</span>
+								<span ng-show="hotel.showMore">{{hotel.description | lowercase }}</span>
+								<span ng-show="hotel.description.length >
+									maxLength && !hotel.showMore">
+									<a href="" ng-click="showMore(hotel)">...</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="panel panel-info">
+			<div class="panel-heading">Quick Add</div>
+			<div class="panel-body">
+
+				<div ng-controller="addController">
+					<form role="form">
+						<div class="form-group">
+							<label >Name</label>
+							<input type="text" class="form-control" placeholder="Enter name"  ng-model="newHotel.name"></div>
+						<div class="form-group">
+							<label >Location</label>
+							<input type="text" ng-model="newHotel.location" class="form-control" placeholder="Location"></div>
+						<div class="form-group">
+							<label >Price</label>
+							<input type="number" ng-model="newHotel.price" class="form-control" placeholder="price"></div>
+						<button ng-click="addHotel()" class="btn btn-default">Add</button>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>

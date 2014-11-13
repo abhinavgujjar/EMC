@@ -19,7 +19,7 @@ function listingController($scope, $rootScope, descLength, hotelsData,
 	} 
 
 
-	$scope.companyName = "EMC";
+	
 
 	$scope.classEven = 'even';
 

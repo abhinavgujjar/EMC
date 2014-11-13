@@ -1,8 +1,7 @@
-angular.module('myApp').controller('addController', function($scope) {
+angular.module('myApp').controller('addController', function($scope, hotelsData) {
 	$scope.addHotel = function() {
 
-		var obj = angular.copy($scope.newHotel);
-		$scope.hotels.push(obj);
+		hotelsData.addHotel($scope.newHotel);
 	}
 
 });

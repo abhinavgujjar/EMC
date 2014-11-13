@@ -1,4 +1,18 @@
-angular.module('myApp', ['ngSanitize', 'myApp.filters', 'myApp.service']);
+angular.module('myApp', ['ngSanitize', 'myApp.filters', 
+	'myApp.service', 'ngRoute', 'abGreeting']);
+
+angular.module('myApp').config(function($routeProvider, greetingProvider) {
+	$routeProvider.when('/home', {
+		templateUrl: 'partials/home.html',
+		controller : 'homeController'
+	});
+
+	$routeProvider.when('/listing', {
+		templateUrl: 'partials/listing.html'
+	});
+
+	greetingProvider.setCompanyName('Microsoft');
+})
 
 angular.module('myApp.filters', []);
 
@@ -73,6 +87,14 @@ angular.module('myApp.service').factory('hotelsData', function() {
 	return {
 		getHotels: function() {
 			return hotels;
+		},
+		addHotel: function(hotel) {
+
+			var newHotel = angular.copy(hotel);
+			if (!newHotel.pic) {
+				newHotel.pic = "unknown.jpg";
+			}
+			hotels.push(newHotel);
 		}
 	}
 
@@ -92,4 +114,7 @@ angular.module('myApp.service').factory('votingService', function() {
 		}
 	}
 
-})
+});
+
+
+
