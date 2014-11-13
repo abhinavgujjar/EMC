@@ -20,26 +20,15 @@
 	</style>
 </head>
 <body class="container">
-	<h1>{{'Bangalore has very heavy traffic' | localify : true}}</h1>
-	<div class="col-md-10">
+	<div class="col-md-8">
 		<div ng-controller="listingController">
 			<div ng-controller="greetingController">
 				<h1 >
 					{{greeting}}, 	{{companyName}} <sup>2</sup>
 				</h1>
-
-				<div>
-					<input ng-model="greeting" />
-				</div>
-
 			</div>
 
 			<br/>
-			<br/>
-			<hr/>
-
-			<hr/>
-			<hr/>
 
 			<div>
 				Search:
@@ -60,9 +49,11 @@
 
 			<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderTerm | limitTo : maxItems">
 				<div class="row well well-sm">
+					<div class="row col-md-5 col-sm-5" ng-class="{'bg-warning' : hotel.price>
+						20000}">
+						<h2 >{{hotel.name | uppercase}}</h2>
+					</div>
 					<div class="row col-md-12 col-sm-12">
-						<h2 ng-class="{highlight : hotel.price>20000}">{{hotel.name | uppercase}}</h2>
-					</div><div class="row col-md-12 col-sm-12">
 						<small>{{hotel.location | localify : true}}</small>
 					</div>
 					<div class="row">
@@ -91,10 +82,10 @@
 								<a ng-href="{{hotel.website}}">website</a>
 							</div>
 							<div  class="text-muted">
-								<span ng-hide="hotel.showMore">{{hotel.description | lowercase | limitTo : 200}}</span>
+								<span ng-hide="hotel.showMore">{{hotel.description | lowercase | limitTo : maxLength}}</span>
 								<span ng-show="hotel.showMore">{{hotel.description | lowercase }}</span>
 								<span ng-show="hotel.description.length >
-									200 && !hotel.showMore">
+									maxLength && !hotel.showMore">
 									<a href="" ng-click="showMore(hotel)">...</a>
 								</span>
 							</div>
@@ -104,16 +95,32 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-2">
-		<div ng-controller="addController">
-			Name:
-			<input type="text" ng-model="newHotel.name"/>
-			Location:
-			<input type="text" ng-model="newHotel.location"/>
-			Price:
-			<input type="number" ng-model="newHotel.price"/>
-			<button ng-click="addHotel()">Add</button>
-			<span>{{newHotel}}</span>
+	<div class="col-md-4">
+		<div class="panel panel-info">
+			<div class="panel-heading">Quick Add</div>
+			<div class="panel-body">
+				<div ng-controller="addController">
+					<div>
+						Name:
+						<input type="text" ng-model="newHotel.name"/>
+					</div>
+					<div>
+						Location:
+						<input type="text" ng-model="newHotel.location"/>
+					</div>
+					<div>
+						Price:
+						<input type="number" ng-model="newHotel.price"/>
+					</div>
+					<div>
+						<button ng-click="addHotel()">Add</button>
+					</div>
+					<div>
+						<span>{{newHotel}}</span>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 

@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngSanitize', 'myApp.filters']);
+angular.module('myApp', ['ngSanitize', 'myApp.filters', 'myApp.service']);
 
 angular.module('myApp.filters', []);
 
@@ -13,5 +13,7 @@ angular.module('myApp.filters').filter('localify', function(){
 
 		return output;
 	}
-})
+});
+
+angular.module('myApp.service', []).value('descLength', 100);
 

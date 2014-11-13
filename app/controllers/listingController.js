@@ -1,27 +1,29 @@
-function listingController($scope, $rootScope) {
+function listingController(y, $rootScope, descLength) {
 
-	$scope.showMore = function(hotel) {
+	y.showMore = function(hotel) {
 		hotel.showMore = true;
 	}
 
-	$scope.maxItems = 5;
-	$scope.orderTerm = 'name';
+	y.maxLength = descLength;
 
-	$scope.upVote = function(hotel) {
+	y.maxItems = 5;
+	y.orderTerm = 'name';
+
+	y.upVote = function(hotel) {
 		hotel.rating++;
 	}
 
-	$scope.downVote = function(hotel) {
+	y.downVote = function(hotel) {
 		hotel.rating--;
 	}
 
 
-	$scope.companyName = "EMC";
+	y.companyName = "EMC";
 
-	$scope.classEven = 'even';
+	y.classEven = 'even';
 
 
-	$scope.hotels = [{
+	y.hotels = [{
 		"name": "Golden Palms",
 		"price": 30000,
 		"location": "Golden Palms Avenue, Off Tumkur Road | Hobli, Tumkur Road, Bangalore 562123, India",
@@ -73,4 +75,4 @@ function listingController($scope, $rootScope) {
 }
 
 
-angular.module('myApp').controller('listingController', listingController);
+angular.module('myApp').controller('listingController', ['$scope', '$rootScope', 'descLength', listingController]);
