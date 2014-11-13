@@ -1,31 +1,32 @@
-function listingController(y, $rootScope, descLength, hotelsData) {
+function listingController($scope, $rootScope, descLength, hotelsData, 
+	votingService) {
 
-	y.showMore = function(hotel) {
+	$scope.showMore = function(hotel) {
 		hotel.showMore = true;
 	}
 
-	y.maxLength = descLength;
+	$scope.maxLength = descLength;
 
-	y.maxItems = 5;
-	y.orderTerm = 'name';
+	$scope.maxItems = 5;
+	$scope.orderTerm = 'name';
 
-	y.upVote = function(hotel) {
-		hotel.rating++;
-	}
+	$scope.upVote = function(hotel){
+		votingService.upVote(hotel)
+	};
 
-	y.downVote = function(hotel) {
-		hotel.rating--;
-	}
-
-
-	y.companyName = "EMC";
-
-	y.classEven = 'even';
+	$scope.downVote = function(hotel){
+		votingService.downVote(hotel);	
+	} 
 
 
-	y.hotels = hotelsData.getHotels();
+	$scope.companyName = "EMC";
+
+	$scope.classEven = 'even';
+
+
+	$scope.hotels = hotelsData.getHotels();
 }
 
 
 angular.module('myApp').controller('listingController', ['$scope', 
-	'$rootScope', 'descLength', 'hotelsData', listingController]);
+	'$rootScope', 'descLength', 'hotelsData', 'votingService', listingController]);

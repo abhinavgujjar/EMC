@@ -2,12 +2,12 @@ angular.module('myApp', ['ngSanitize', 'myApp.filters', 'myApp.service']);
 
 angular.module('myApp.filters', []);
 
-angular.module('myApp.filters').filter('localify', function(){
-	return function(input, extraNationalist){
+angular.module('myApp.filters').filter('localify', function() {
+	return function(input, extraNationalist) {
 
 		var output = input.replace('Bangalore', 'Bengaluru');
 
-		if ( extraNationalist){
+		if (extraNationalist) {
 			output = output.replace('India', 'Bharat!');
 		}
 
@@ -19,7 +19,7 @@ angular.module('myApp.filters').filter('localify', function(){
 angular.module('myApp.service', []).value('descLength', 100);
 
 //usage
-angular.module('myApp.service').factory('hotelsData', function(){
+angular.module('myApp.service').factory('hotelsData', function() {
 	var hotels = [{
 		"name": "Golden Palms",
 		"price": 30000,
@@ -71,10 +71,25 @@ angular.module('myApp.service').factory('hotelsData', function(){
 	}];
 
 	return {
-		getHotels : function(){
+		getHotels: function() {
 			return hotels;
 		}
 	}
 
 });
 
+angular.module('myApp.service').factory('votingService', function() {
+
+	return {
+		upVote: function(hotel) {
+			hotel.rating++;
+		},
+		downVote: function(hotel) {
+			if (hotel.rating > 0) {
+
+				hotel.rating--;
+			}
+		}
+	}
+
+})
