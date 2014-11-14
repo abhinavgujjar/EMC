@@ -33,7 +33,6 @@ function listingController($scope, $rootScope, descLength, hotelsData,
 
 }
 
-
 angular.module('myApp').controller('listingController', ['$scope',
 	'$rootScope', 'descLength', 'hotelsData', 'votingService', '$location', '$http', listingController
 ]);
