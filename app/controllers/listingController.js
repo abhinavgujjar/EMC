@@ -21,7 +21,7 @@ function listingController($scope, $rootScope, descLength, hotelsData,
 	$scope.selectHotel = function(hotel) {
 		hotelsData.selectedHotel = hotel;
 
-		$location.url('/details/' + hotel.id);
+		$location.url('/details/' + hotel.objectId);
 	}
 
 	$scope.classEven = 'even';

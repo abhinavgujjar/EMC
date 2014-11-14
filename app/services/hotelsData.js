@@ -1,10 +1,10 @@
 //usage
-angular.module('myApp.service').factory('hotelsData', function($http, $q) {
+angular.module('myApp.service').factory('hotelsData', function($http, $q, $resource) {
 	return {
 		getHotels: function() {
 			var deferred = $q.defer();
 
-			var resp = $http.get('https://api.parse.com/1/classes/inn',{
+			var resp = $http.get('https://api.parse.com/1/classes/inn', {
 				headers: {
 					'X-Parse-Application-Id': 'KWQ0rGbTccdhYd4a0Cawy21wpi94GBdh9VjnQsyZ',
 					'X-Parse-REST-API-Key': 'M0j6NQBiPVgdOnuv5811fbgTojTAVqo6XjF1E3Pd',
@@ -28,15 +28,26 @@ angular.module('myApp.service').factory('hotelsData', function($http, $q) {
 
 		},
 		getHotel: function(hotelId) {
-			var target;
 
-			angular.forEach(hotels, function(item, index) {
-				if (item.id === hotelId) {
-					target = item;
+
+			var innRef = $resource('https://api.parse.com/1/classes/inn/:hotelId', null, {
+				read: {
+					method: 'GET',
+					headers: {
+						'X-Parse-Application-Id': 'KWQ0rGbTccdhYd4a0Cawy21wpi94GBdh9VjnQsyZ',
+						'X-Parse-REST-API-Key': 'M0j6NQBiPVgdOnuv5811fbgTojTAVqo6XjF1E3Pd',
+					}
 				}
 			});
 
-			return target;
+
+			return innRef.read({
+				hotelId: hotelId
+			});
+
+
+			
+
 		}
 	}
 

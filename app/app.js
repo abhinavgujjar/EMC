@@ -1,5 +1,5 @@
 angular.module('myApp', ['ngSanitize', 'myApp.filters',
-	'myApp.service', 'ngRoute', 'abGreeting'
+	'myApp.service', 'ngRoute', 'abGreeting', 'ngResource'
 ]);
 
 angular.module('myApp').config(function($routeProvider, greetingProvider) {

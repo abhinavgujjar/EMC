@@ -26,7 +26,17 @@
       <div class="form-group">
         <label  class="col-sm-2 control-label">Location</label>
         <div class="col-sm-10">
-          <input type="name" ng-model="newHotel.location" class="form-control" placeholder="Location"></div>
+          <div>
+            <select ng-model="selectedState" class="form-control">
+              <option ng-repeat="state in availableStates" ng-value="state">{{state}}</option>
+            </select>
+          </div>
+          <div>
+            <select ng-model="newHotel.location" class="form-control">
+              <option ng-repeat="city in availableCities" ng-value="city">{{city}}</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <div >
@@ -58,39 +68,57 @@
       </div>
     </form>
   </div>
-  <div class="col-md-3">
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="item in newHotel.amenities">
-        <div ng-hide="itemBeingEdited === item" class="row">
-          <div class="col-md-8">{{item.name}}</div>
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-warning">
-              <span ng-click="edit(item)" class="glyphicon glyphicon-pencil"></span>
-            </button>
-          </div>
+  <div>
+    <div ng-controller="amenitiesController">
+      <div class="col-md-3">
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="item in newHotel.amenities">
+            <div ng-hide="itemBeingEdited === item" class="row">
+              <div class="col-md-8">{{item.name}}</div>
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-warning">
+                  <span ng-click="edit(item)" class="glyphicon glyphicon-pencil"></span>
+                </button>
+              </div>
 
+            </div>
+            <div ng-show="itemBeingEdited === item" class="row">
+              <div class="col-md-8">
+                <input type="text" ng-model="item.name" class="form-control" />
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-success">
+                  <span ng-click="save()" class="glyphicon glyphicon-file"></span>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item" >
+            <div class="row">
+              <div class="col-md-8">
+                <input ng-model="newAmenity" class="form-control" type="text"/>
+              </div>
+              <div class="col-md-4">
+                <button  ng-click="addAmenity(newAmenity)" class="btn btn-sm btn-primary">Add</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn btn-sm btn-info" ng-click="currentIndex = currentIndex - 1  ">Prev</button>
         </div>
-        <div ng-show="itemBeingEdited === item" class="row">
-          <div class="col-md-8">
-            <input type="text" ng-model="item.name" class="form-control" />
-          </div>
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-success">
-              <span ng-click="save()" class="glyphicon glyphicon-file"></span>
-            </button>
-          </div>
+        <div class="col-md-2 col-md-offset-8">
+          <button ng-click="currentIndex = currentIndex + 1" class="btn btn-sm btn-info">Next</button>
         </div>
-      </li>
-      <li class="list-group-item" >
-        <div class="row">
-          <div class="col-md-8">
-            <input ng-model="newAmenity" class="form-control" type="text"/>
-          </div>
-          <div class="col-md-4">
-            <button  ng-click="addAmenity(newAmenity)" class="btn btn-sm btn-primary">Add</button>
-          </div>
-        </div>
-      </li>
-    </ul>
+      </div>
+      <div class="row">
+        <img ng-src="images/{{images[currentIndex]}}" class="col-md-10 col-md-offset-1 img-circle" />
+      </div>
+    </div>
+
   </div>
 </div>
