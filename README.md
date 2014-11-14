@@ -13,3 +13,4 @@ Plunks -
 	* How do we do automated testing without input control ids?
 	* How to get the specific type of error
 
+Participant List - [Excel](https://docs.google.com/spreadsheets/d/19PF8RdKpKFab1KICoIjKV-6JhdnUTXteLxQ3RDRxFHc/edit?usp=sharing)
