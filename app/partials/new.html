@@ -61,22 +61,35 @@
   <div class="col-md-3">
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="item in newHotel.amenities">
-        <span ng-hide="itemBeingEdited === item">
-          {{item.name}}
-          <button>
-            <span ng-click="edit(item)" class="glyphicon glyphicon-pencil"></span>
-          </button>
-        </span>
-        <span ng-show="itemBeingEdited === item">
-          <input type="text" ng-model="item.name"/>
-          <button>
-            <span ng-click="save()" class="glyphicon glyphicon-file"></span>
-          </button>
-        </span>
+        <div ng-hide="itemBeingEdited === item" class="row">
+          <div class="col-md-8">{{item.name}}</div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-warning">
+              <span ng-click="edit(item)" class="glyphicon glyphicon-pencil"></span>
+            </button>
+          </div>
+
+        </div>
+        <div ng-show="itemBeingEdited === item" class="row">
+          <div class="col-md-8">
+            <input type="text" ng-model="item.name" class="form-control" />
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-success">
+              <span ng-click="save()" class="glyphicon glyphicon-file"></span>
+            </button>
+          </div>
+        </div>
       </li>
       <li class="list-group-item" >
-        <input ng-model="newAmenity" type="text"/>
-        <button  ng-click="addAmenity(newAmenity)" class="btn btn-sm btn-primary">Add</button>
+        <div class="row">
+          <div class="col-md-8">
+            <input ng-model="newAmenity" class="form-control" type="text"/>
+          </div>
+          <div class="col-md-4">
+            <button  ng-click="addAmenity(newAmenity)" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

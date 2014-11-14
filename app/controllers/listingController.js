@@ -27,7 +27,9 @@ function listingController($scope, $rootScope, descLength, hotelsData,
 	$scope.classEven = 'even';
 
 
-	$scope.hotels = hotelsData.getHotels();
+	hotelsData.getHotels().then(function(hotels){
+		$scope.hotels = hotels;
+	});
 
 }
 
