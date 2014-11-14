@@ -12,10 +12,16 @@ angular.module('myApp').config(function($routeProvider, greetingProvider) {
 		templateUrl: 'partials/listing.html',
 		controller: 'listingController'
 	});
-	
+
 	$routeProvider.when('/new', {
 		templateUrl: 'partials/new.html',
 		controller: 'addController'
+	});
+
+
+	$routeProvider.when('/details/:hotelId', {
+		templateUrl: 'partials/details.html',
+		controller: 'detailsController'
 	});
 
 	$routeProvider.otherwise({
@@ -46,6 +52,7 @@ angular.module('myApp.service', []).value('descLength', 100);
 //usage
 angular.module('myApp.service').factory('hotelsData', function() {
 	var hotels = [{
+		"id": "1",
 		"name": "Golden Palms",
 		"price": 30000,
 		"location": "Golden Palms Avenue, Off Tumkur Road | Hobli, Tumkur Road, Bangalore 562123, India",
@@ -54,6 +61,7 @@ angular.module('myApp.service').factory('hotelsData', function() {
 		"website": "http://www.clarksexotica.com/",
 		"pic": "goldenpalms.jpg",
 	}, {
+		"id": "2",
 		"name": "Clarks Exotica",
 		"price": 13000,
 		"location": "Swiss Town, Hollywood Junction, Sadahalli Post, Devanahalli Road, Bangalore 562 110, India",
@@ -62,6 +70,7 @@ angular.module('myApp.service').factory('hotelsData', function() {
 		"pic": "clarks-exotica-resort.jpg",
 		"rating": 6
 	}, {
+		"id": "3",
 		"name": "The Elanza Hotel",
 		"price": 7000,
 		"location": "88 / 2 Richmond Road, Bangalore 560025, India",
@@ -70,6 +79,7 @@ angular.module('myApp.service').factory('hotelsData', function() {
 		"pic": "the-elanza-hotel.jpg",
 		"rating": 3
 	}, {
+		"id": "4",
 		"name": "Ramada Bangalore",
 		"price": 17000,
 		"location": "11 Park Road, Bangalore 560051, India",
@@ -78,6 +88,7 @@ angular.module('myApp.service').factory('hotelsData', function() {
 		"pic": "ramada.jpg",
 		"rating": 8
 	}, {
+		"id": "5",
 		"name": "Ibis",
 		"price": 14500,
 		"location": "26/1 Hosur Road | Near The Oxford College Bomanahalli, Bangalore 560068, India",
@@ -86,6 +97,7 @@ angular.module('myApp.service').factory('hotelsData', function() {
 		"pic": "ibis.jpg",
 		"rating": 1
 	}, {
+		"id": "6",
 		"name": "The Oberoi",
 		"price": 24500,
 		"location": "37-39,Mahatma Gandhi Road, Bangalore 560001, India",
@@ -106,6 +118,17 @@ angular.module('myApp.service').factory('hotelsData', function() {
 				newHotel.pic = "unknown.jpg";
 			}
 			hotels.push(newHotel);
+		},
+		getHotel : function(hotelId){
+			var target;
+
+			angular.forEach(hotels, function(item, index){
+				if (item.id === hotelId){
+					target = item;
+				}
+			});
+
+			return target;
 		}
 	}
 

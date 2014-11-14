@@ -1,5 +1,5 @@
 function listingController($scope, $rootScope, descLength, hotelsData, 
-	votingService) {
+	votingService, $location) {
 
 	$scope.showMore = function(hotel) {
 		hotel.showMore = true;
@@ -18,8 +18,11 @@ function listingController($scope, $rootScope, descLength, hotelsData,
 		votingService.downVote(hotel);	
 	} 
 
+	$scope.selectHotel = function(hotel){
+		hotelsData.selectedHotel = hotel;
 
-	
+		$location.url('/details');
+	}
 
 	$scope.classEven = 'even';
 
@@ -29,4 +32,4 @@ function listingController($scope, $rootScope, descLength, hotelsData,
 
 
 angular.module('myApp').controller('listingController', ['$scope', 
-	'$rootScope', 'descLength', 'hotelsData', 'votingService', listingController]);
+	'$rootScope', 'descLength', 'hotelsData', 'votingService', '$location', listingController]);

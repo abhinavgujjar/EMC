@@ -1,0 +1,44 @@
+<div class="row well well-sm">
+	<div class="row col-md-5 col-sm-5" ng-class="{'bg-warning' : hotel.price>
+		20000}">
+		<h2 >{{hotel.name | uppercase}}</h2>
+	</div>
+	<div class="row col-md-12 col-sm-12">
+		<small>{{hotel.location | localify : true}}</small>
+	</div>
+	<div class="row">
+		<div class="col-md-1 hidden-sm">
+			<div class="text-center">
+				<button ng-click="upVote(hotel)" class="btn btn-success">
+					<span class="glyphicon glyphicon-chevron-up"></span>
+				</button>
+			</div>
+			<div class="text-center">
+				<h3>{{hotel.rating}}</h3>
+			</div>
+			<div class="text-center">
+				<button ng-click="downVote(hotel)" class="btn btn-danger">
+					<span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+			</div>
+
+		</div>
+		<img ng-src="images/{{hotel.pic}}" class="col-md-3 col-sm-12" />
+		<div class="col-md-3 hidden-sm">
+			<h3>{{hotel.price | currency : 'INR '}}</h3>
+		</div>
+		<div class="col-md-4 hidden-sm">
+			<div>
+				<a ng-href="{{hotel.website}}">website</a>
+			</div>
+			<div  class="text-muted">
+				<span ng-hide="hotel.showMore">{{hotel.description | lowercase | limitTo : maxLength}}</span>
+				<span ng-show="hotel.showMore">{{hotel.description | lowercase }}</span>
+				<span ng-show="hotel.description.length >
+					maxLength && !hotel.showMore">
+					<a href="" ng-click="showMore(hotel)">...</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
