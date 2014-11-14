@@ -49,3 +49,34 @@ angular.module('myApp.filters').filter('localify', function() {
 //declariton
 angular.module('myApp.service', []).value('descLength', 100);
 
+angular.module('myApp').directive('preview', function() {
+	return {
+		restrict: 'E',
+		templateUrl: 'partials/preview.html',
+		scope: {
+			text: '=',
+			rows: '@'
+		}
+	}
+})
+
+angular.module('myApp').directive('routeTicker', function() {
+	return {
+		restrict: 'E',
+		template: '<h3>{{ticks}}</h3>',
+		scope: {
+
+		},
+		controller: function($scope, $interval) {
+			$scope.ticks = 0;
+
+			$interval(function() {
+				$scope.ticks++
+			}, 300);
+
+			$scope.$on('$routeChangeSuccess', function() {
+				$scope.ticks = 0;
+			})
+		}
+	}
+})

@@ -34,12 +34,12 @@
       <div class="form-group">
         <label  class="col-sm-2 control-label">Location</label>
         <div class="col-sm-10">
-          <div>
+          <div class="col-sm-6">
             <select ng-model="selectedState" class="form-control">
               <option ng-repeat="state in availableStates" ng-value="state">{{state}}</option>
             </select>
           </div>
-          <div>
+          <div class="col-sm-6">
             <select ng-model="newHotel.location" class="form-control">
               <option ng-repeat="city in availableCities" ng-value="city">{{city}}</option>
             </select>
@@ -64,7 +64,7 @@
       <div class="form-group">
         <label  class="col-sm-2 control-label">Description</label>
         <div class="col-sm-10">
-          <textarea ng-model="newHotel.description" rows="8" class="form-control" placeholder="Description"></textarea>
+          <preview rows="10" text="newHotel.description"></preview>
         </div>
       </div>
 
