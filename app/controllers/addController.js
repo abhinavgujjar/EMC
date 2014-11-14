@@ -1,4 +1,6 @@
-angular.module('myApp').controller('addController', function($scope, hotelsData, $location) {
+angular.module('myApp').controller('addController', 
+
+	function($scope, hotelsData, $location) {
 	var defaultHotel = {
 		price: 5000,
 		amenities: [{
@@ -7,6 +9,15 @@ angular.module('myApp').controller('addController', function($scope, hotelsData,
 			name: 'Wifi'
 		}]
 	};
+
+	$scope.fontLarge = false;
+
+	$scope.$on('fontSizeChanged', function(event, args){
+		if (args == 'large'){
+			$scope.fontLarge = true;
+		}
+	});
+
 	$scope.newHotel = angular.copy(defaultHotel);
 
 	$scope.availableStates = ['Tamil Nadu', 'Karnataka', 'Kerala'];

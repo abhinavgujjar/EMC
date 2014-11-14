@@ -13,9 +13,17 @@
     border-width:  2px;
   }
 
+  .medium {
+    font-size: 46px;
+  }
+
+  .large {
+    font-size : 64px;
+  }
+
 
 </style>
-<div>
+<div ng-class="{'large' : fontLarge}">
   <div class="col-md-7">
     <form class="form-horizontal" role="form" name="hotelsForm">
       <div class="form-group">

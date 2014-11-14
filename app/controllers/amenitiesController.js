@@ -9,10 +9,14 @@ angular.module('myApp').controller('amenitiesController', function($scope) {
 		$scope.itemBeingEdited= null;	
 	}
 
-	$scope.addAmenity = function(newAmenity){
+	$scope.addAmenity = function(){
 		$scope.newHotel.amenities.push({
-			name : newAmenity
-		})
+			name : $scope.newAmenity
+		});
+
+		$scope.newAmenity = '';
+
+		$scope.$emit('action', 'amenity added');
 	}
 
 });
